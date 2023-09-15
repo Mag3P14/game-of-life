@@ -7,7 +7,7 @@ from utils import *
 pygame.init()
 
 class GameState:
-    def __init__(self, state = 'paused', sim_delay = 0.1):
+    def __init__(self, state = 'paused', sim_delay = 0.05):
         self.state = state
         self.sim_delay = sim_delay
 
