@@ -1,6 +1,6 @@
 from utils import *
 
-size = 5
+size = 10
 
 class Cell:
     def __init__(self, x, y, size = 20, alive = False, alive_next_gen = False):
