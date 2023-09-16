@@ -20,11 +20,10 @@ class GameState:
         self.last_time = last_time
 
     def state_manager(self):
-        cur_time = time.time()
         if self.state == 'paused':
             self.paused()
         if self.state == 'running':
-            self.running(cur_time, self.last_time)
+            self.running()
 
     def paused(self):
         for event in pygame.event.get():
@@ -38,9 +37,9 @@ class GameState:
                     self.state = 'running'
                     print("STATE: RUNNING")
                 if event.key == pygame.K_LEFT:
-                    delay += 1.5 
+                    delay *= 1.5 
                 if event.key == pygame.K_RIGHT:
-                    delay += 0.5   
+                    delay *= 0.5   
                 if event.key == pygame.K_r:
                     randomize(cells)
                 if event.key == pygame.K_c:
@@ -50,11 +49,7 @@ class GameState:
         time.sleep(0.01)
         pygame.display.update()
 
-    def running(self, cur_time, last_time):
-        if cur_time - last_time > self.sim_delay:
-            next_generation(screen,cells)
-            rendered = True
-            self.last_time = time.time()
+    def running(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -77,7 +72,11 @@ class GameState:
                 if event.key == pygame.K_q:
                     self.quit = True
         time.sleep(0.01)
-        pygame.display.update()
+        if time.time() - self.last_time > self.sim_delay:
+            next_generation(screen,cells)
+            self.last_time = time.time()
+            pygame.display.update()
+            return True
 
 game = GameState()
 while not game.quit:
