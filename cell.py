@@ -1,7 +1,5 @@
 from utils import *
 
-size = 10
-
 class Cell:
     def __init__(self, x, y, size = 20, alive = False, alive_next_gen = False):
         self.x = x
@@ -25,18 +23,19 @@ class Cell:
                 return True
         return False
 
-cells = [[]]
-x = 0
-y = 0
-i = 0
-while y < screen_h:
-    while x < screen_w: 
-        cells[i].append(Cell(x,y,size))
-        x += size + 2 
-    y += size + 2 
+def init_cells(cells):
+    size = 20
     x = 0
-    i += 1
-    cells.append([])
+    y = 0
+    i = 0
+    while y < screen_h:
+        while x < screen_w: 
+            cells[i].append(Cell(x,y,size))
+            x += size 
+        y += size 
+        x = 0
+        i += 1
+        cells.append([])
 
-cells.pop(-1)
+    cells.pop(-1)
 
