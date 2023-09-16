@@ -13,10 +13,10 @@ cells = [[]]
 init_cells(cells)
 
 class GameState:
-    def __init__(self, state = 'paused', sim_delay = 0.5, quit = False, last_time = time.time()):
+    def __init__(self, state = 'paused', quit = False, sim_delay = 0.05, last_time = time.time()):
         self.state = state
-        self.sim_delay = sim_delay
         self.quit = quit
+        self.sim_delay = sim_delay
         self.last_time = last_time
 
     def state_manager(self):

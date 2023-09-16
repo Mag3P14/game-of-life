@@ -24,7 +24,7 @@ class Cell:
         return False
 
 def init_cells(cells):
-    size = 20
+    size = 10
     x = 0
     y = 0
     i = 0
