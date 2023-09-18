@@ -2,4 +2,4 @@
 ###### TODO: 
 - [ ] Insert patterns
 - [ ] Optimize for running with larger grids
-- [x] Frame independent updates
+- [x] Animation independent of main loop

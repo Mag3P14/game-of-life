@@ -1,7 +1,9 @@
 from utils import *
 
+cell_size = 20
+
 class Cell:
-    def __init__(self, x, y, size = 20, alive = False, alive_next_gen = False):
+    def __init__(self, x, y, size = cell_size, alive = False, alive_next_gen = False):
         self.x = x
         self.y = y
         self.alive = alive
@@ -24,7 +26,7 @@ class Cell:
         return False
 
 def init_cells(cells):
-    size = 10
+    size = cell_size 
     x = 0
     y = 0
     i = 0
