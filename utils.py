@@ -10,8 +10,6 @@ screen_w = 1600
 screen_h = 900 
 screen = pygame.display.set_mode((screen_w,screen_h))
 
-#screen.fill(grey)
-
 def count_neighbours(cells,x,y):
     sum = 0
     len_x = len(cells[0])
