@@ -1,6 +1,6 @@
 from utils import *
 
-cell_size = 20
+cell_size = 10
 
 class Cell:
     def __init__(self, x, y, size = cell_size, alive = False, alive_next_gen = False):
@@ -17,10 +17,18 @@ class Cell:
         else:
             pygame.draw.rect(screen, black, (x, y, self.size, self.size))
 
-    def clicked(self,pos):
+    def spawn(self,pos):
         if pos[0] > self.x and pos[0] < self.x + self.size:
             if pos[1] > self.y and pos[1] < self.y + self.size:
-                self.alive = not self.alive
+                self.alive = True
+                self.draw(screen,self.x,self.y,self.alive)
+                return True
+        return False
+    
+    def kill(self,pos):
+        if pos[0] > self.x and pos[0] < self.x + self.size:
+            if pos[1] > self.y and pos[1] < self.y + self.size:
+                self.alive = False
                 self.draw(screen,self.x,self.y,self.alive)
                 return True
         return False
